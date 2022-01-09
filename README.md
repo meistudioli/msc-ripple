@@ -1,0 +1,2 @@
+# msc-ripple
+Interaction with UI mutation is usability 101 level stuff. Web developers should always keep this in mind to let user realize which element has beeb tapped. I like Google Material Design's ripple effect when user taped some clickable elements, suh as &lt;a />、&lt;button />. That's why I deign &lt;msc-ripple /> to wrap clickable elements and let them have ripple effect after user tapped. Besides that, &lt;msc-ripple /> also provide sound &amp; vibrate options to let developers decide turn them on or not.
