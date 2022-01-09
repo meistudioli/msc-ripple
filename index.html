@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Web Component: &lt;msc-ripple /&gt; - web components based tapped feeback effect</title>
+<meta name="description" content="Interaction with UI mutation is usability 101 level stuff. Web developers should always keep this in mind to let user realize which element has beeb tapped. I like Google Material Design's ripple effect when user taped some clickable elements, suh as <a />、<button />. That's why I deign <msc-ripple /> to wrap clickable elements and let them have ripple effect after user tapped. Besides that, <msc-ripple /> also provide sound & vibrate options to let developers decide turn them on or not." />
+<script type="module" src="mjs/wc-msc-ripple.js"></script>
+<style>
+/*** The new CSS Reset - version 1.4.2 (last updated 30.11.2021) ***/
+/* All rights reserved from https://elad2412.github.io/the-new-css-reset/ */
+*:where(:not(iframe,canvas,img,svg,video):not(svg *,symbol *)){all:unset;display:revert;}
+*,*::before,*::after{box-sizing:border-box;}
+ol,ul,menu{list-style:none;}
+img{max-width:100%;}
+table{border-collapse:collapse;}
+textarea{white-space:revert;}
+:where([contenteditable]){-moz-user-modify:read-write;-webkit-user-modify:read-write;overflow-wrap:break-word;-webkit-line-break:after-white-space;}
+
+/* page */
+html,body{font-family:system-ui,sans-serif;text-size-adjust:100%;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;font-size:16px;}
+#hd,#ft{display:none;}
+
+body{position:relative;inline-size:100vw;block-size:100vh;}
+
+.demo{--border-radius:16px;position:absolute;inset-inline-start:50%;inset-block-start:50%;inline-size:80vmin;transform:translate(-50%,-50%);background:#dce2f0;border-radius:var(--border-radius);}
+.demo::after{position:absolute;color:#232a31;inset-inline-start:50%;inset-block-start:50%;font-size:2em;content:'tap here';transform:translate(-50%,-50%);pointer-events:none;}
+.demo msc-ripple{--msc-ripple-border-radius:var(--border-radius);}
+.tap-zone{aspect-ratio:1/1;inline-size:100%;}
+msc-ripple{--msc-ripple-color:rgba(74,138,241,.2);}
+
+/* input[type=color] */
+.color-picker{position:absolute;inset-inline-end:1em;inset-block-start:1em;}
+input[type="color"]{--size:48px;inline-size:var(--size);block-size:var(--size);border-radius:var(--size);}
+input[type="color"]:focus{outline:0 none;}
+input[type="color"]::-webkit-color-swatch-wrapper{padding:0;}
+input[type="color"]::-webkit-color-swatch{border-radius:var(--size);}
+input[type="color"]:focus-visible{box-shadow:0 0 0 2px #95c2f8;}
+</style>
+</head>
+
+<body>
+
+<div class="demo">
+  <msc-ripple sound vibrate>
+    <div class="tap-zone"></div>
+  </msc-ripple>
+  <input class="color-picker" type="color" name="theme" value="#4a8af1" />
+</div>
+
+<script type="module">
+import { _wcl } from './mjs/common-lib.js';
+
+const input = document.querySelector('.color-picker');
+
+input.addEventListener('change',
+  (evt) => {
+    const hex = input.value;
+
+    _wcl.addStylesheetRules(
+      '.demo msc-ripple',
+      {
+        '--msc-ripple-color': `${hex}24`
+      }
+    );
+
+  }
+);
+</script>
+
+</body>
+
+</html>

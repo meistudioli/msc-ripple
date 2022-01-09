@@ -1,0 +1,26 @@
+{
+  "name": "msc-ripple",
+  "version": "1.0.0",
+  "description": "Interaction with UI mutation is usability 101 level stuff. Web developers should always keep this in mind to let user realize which element has beeb tapped. I like Google Material Design's ripple effect when user taped some clickable elements, suh as <a />、<button />. That's why I deign <msc-ripple /> to wrap clickable elements and let them have ripple effect after user tapped. Besides that, <msc-ripple /> also provide sound & vibrate options to let developers decide turn them on or not.",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/meistudioli/msc-ripple.git"
+  },
+  "keywords": [
+    "web",
+    "front-end",
+    "web component",
+    "UI",
+    "UX"
+  ],
+  "author": "Paul Li",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/meistudioli/msc-ripple/issues"
+  },
+  "homepage": "https://github.com/meistudioli/msc-ripple#readme"
+}
