@@ -85,7 +85,7 @@ export class MscRipple extends HTMLElement {
     super();
 
     // template
-    this.attachShadow({ mode: 'open', delegatesFocus: true });
+    this.attachShadow({ mode: 'open', delegatesFocus: false });
     this.shadowRoot.appendChild(template.content.cloneNode(true));
 
     // data
@@ -136,7 +136,7 @@ export class MscRipple extends HTMLElement {
   }
 
   disconnectedCallback() {
-    if (this.#data?.controller) {
+    if (this.#data?.controller?.abort) {
       this.#data.controller.abort();
     }
   }
@@ -237,6 +237,11 @@ export class MscRipple extends HTMLElement {
   }
 
   _onClick(evt) {
+    // drop useless click
+    if (evt?.webkitForce === 0 || evt?.pointerType === '') {
+      return
+    }
+
     // sound
     if (this.sound) {
       soundEffect.currentTime = 0;
